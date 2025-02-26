@@ -52,7 +52,7 @@ const App = () => {
               else if (item === "=") calculateResult();
               else handleClick(item);
             }}
-            className={`px-6 py-4 text-xl font-bold rounded-lg ${
+            className={`px-6 py-4 text-xl font-bold rounded-lg cursor-pointer flex justify-center items-center ${
               item === "=" ? "bg-red-500 text-white" : "bg-white text-gray-800"
             } shadow-md hover:bg-gray-300 transition`}
           >
@@ -64,17 +64,21 @@ const App = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center rounded-xl items-center bg-gray-500 p-8 relative ml-50">
-      <h1 className="text-3xl font-bold text-white mb-6">Mini Calculatrice</h1>
+    <div className="w-full h-screen flex justify-center items-center">
+      <div className="flex flex-col w-120 justify-center rounded-xl items-center bg-gray-500 p-8 relative">
+        <h1 className="text-3xl font-bold text-white mb-6">
+          Mini Calculatrice
+        </h1>
 
-      <input
-        type="text"
-        readOnly
-        value={expression}
-        className="mb-4 px-4 py-2 w-full text-right text-xl text-white font-semibold border-2 border-white rounded-md bg-gray-700"
-      />
+        <input
+          type="text"
+          readOnly
+          value={expression}
+          className="mb-4 px-4 py-2 w-full text-right text-xl text-white font-semibold border-2 border-white rounded-md bg-gray-700"
+        />
 
-      <Number />
+        <Number />
+      </div>
     </div>
   );
 };
