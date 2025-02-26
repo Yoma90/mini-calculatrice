@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const App = () => {
-  const [expression, setExpression] = useState(0); // Stocke l'expression mathématique
+  const [expression, setExpression] = useState(0);
 
   const handleClick = (value) => {
     setExpression((prev) => prev + value);
