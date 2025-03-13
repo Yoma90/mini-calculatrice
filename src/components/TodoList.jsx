@@ -9,18 +9,23 @@ export const TodoList = () => {
   const [tasks, setTasks] = useState(TASKS);
   const [inputValue, setInputValue] = useState("");
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
   const handleAddTask = () => {
     if (inputValue.trim()) {
-      setTasks([...tasks, inputValue.trim()]);
-      setInputValue("");
+      const NewTask = {
+        id: tasks.length + 1,
+        name: inputValue.trim(),
+        completed: false,
+      };
+      setTasks([...tasks, NewTask]);
     }
+    setInputValue("");
   };
 
-  const handleDelete = (index) => {
+  const handleDetete = (index) => {
     setTasks(tasks.filter((_, i) => i !== index));
   };
   return (
@@ -42,9 +47,9 @@ export const TodoList = () => {
       >
         <input
           type="text"
-          value={inputValue}
-          onChange={handleChange}
           placeholder="Type here..."
+          value={inputValue}
+          onChange={handleInputChange}
         />
         <button
           style={{
@@ -59,22 +64,10 @@ export const TodoList = () => {
       <div>
         <ul>
           {tasks.map((task, index) => (
-            <li
-              style={{
-                marginRight: "10px",
-              }}
-              key={index}
-            >
+            <li key={index}>
               {" "}
               {task.name}
-              <button
-                style={{
-                  cursor: "pointer",
-                }}
-                onClick={() => handleDelete(index)}
-              >
-                delete
-              </button>
+              <button onClick={() => handleDetete(index)}> delete</button>
             </li>
           ))}
         </ul>
